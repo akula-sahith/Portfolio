@@ -68,9 +68,6 @@ export default function App() {
               <About />
               <Artworks />
 
-              <Skills />
-              <Experience />
-
               {/* View All Projects */}
               <section className="bg-[#050505] w-full py-24 flex items-center justify-center relative z-10 border-t border-white/5">
                 <button
@@ -81,6 +78,9 @@ export default function App() {
                   <span className="w-2 h-2 rounded-full bg-brand-accent group-hover:bg-black transition-colors" />
                 </button>
               </section>
+
+              <Skills />
+              <Experience />
 
               {/* Certifications — expands inline, no separate route needed */}
               <Certifications />
