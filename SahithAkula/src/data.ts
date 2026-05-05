@@ -1,0 +1,203 @@
+export const PORTFOLIO_DATA = {
+  bio: {
+    name: "SAHITH AKULA",
+    role: "FULL STACK & AI DEVELOPER",
+    description: "Developing scalable backend systems, responsive frontend, and AI/ML pipelines.",
+    email: "akulasahith268@gmail.com",
+    location: "Vijayawada, AP",
+    phone: "+91 8341999296"
+  },
+  apart: [
+    {
+      id: '01',
+      category: 'FULL STACK & MOBILE',
+      title: 'CROSS-PLATFORM SYSTEMS',
+      desc: 'Building robust scalable web apps with React & Spring Boot, and real-time mobile solutions with Flutter and Firebase.',
+    },
+    {
+      id: '02',
+      category: 'AI & MACHINE LEARNING',
+      title: 'INTELLIGENT PIPELINES',
+      desc: 'Integrating RAG, large language models, and browser automation to drive data-centric intelligent platforms.',
+    },
+    {
+      id: '03',
+      category: 'COMPUTER VISION',
+      title: 'REAL-TIME DETECTION',
+      desc: 'Training state-of-the-art models like YOLOv12 for high-accuracy object detection and tracking systems.',
+    },
+    {
+      id: '04',
+      category: 'DEVOPS & INFRA',
+      title: 'CLOUD-NATIVE DELIVERY',
+      desc: 'Orchestrating robust CI/CD pipelines using Docker, GitHub Actions, and containerized deployments on AWS EC2.',
+    }
+  ],
+  artworks: [
+    {
+      id: "1",
+      title: "TRAFFIC SIGN RECOGNITION & ALERT",
+      description: "Trained a YOLOv12 model on Indian traffic sign data with a Flask+Spring Boot+MongoDB stack, achieving real-time alerts.",
+      imageUrl: "/traffic.jpg",
+      aspectRatio: 737 / 223,
+      videoUrl: "",
+      demoUrl: "",
+      paperUrl: "https://drive.google.com/drive/u/0/folders/1OfMVylGdW3eYLVlDGaPnad63w9T1Y0Af",
+      githubUrl: "https://github.com/akula-sahith",
+      detailed: {
+        problemStatement: "Need an automated way to detect traffic violations and correlate vehicle actions with traffic signs in real-time.",
+        solution: "A YOLOv12-based model achieving 95% mAP@50 and an automated violation detection engine reaching 94% accuracy, communicating to a Flutter app within 1-2s.",
+        features: ["YOLOv12 Object Detection", "Real-Time 1-2s Alerts", "Flutter Mobile App", "Published Research Paper"],
+        techStack: ["Python", "Flask", "Spring Boot", "flutter", "MongoDB", "firebase"]
+      }
+    },
+    {
+      id: "2",
+      title: "SENTINEL RISK INTELLIGENCE",
+      description: "AI-Powered Multi-Business Risk Intelligence Platform running on AWS EC2.",
+      imageUrl: "/Sentinel.png",
+      aspectRatio: 1898 / 927,
+      videoUrl: "",
+      demoUrl: "https://sentinelworld.vercel.app/",
+      githubUrl: "https://github.com/akula-sahith",
+      detailed: {
+        problemStatement: "Organizations lack a clear, consolidated view of multi-source business, geopolitical, and supply chain risks in real-time.",
+        solution: "A full-stack React+Node.js platform integrating LLM-based intelligence layers to interpret events, generate risk insights, and simulate multi-industry risk impacts.",
+        features: ["LLM Intelligence Layer", "Interactive Dashboards", "Event-Driven Data Pipelines", "Dockerized Container App"],
+        techStack: ["React", "node.js", "Express", "MongoDB", "Docker", "aws"]
+      }
+    },
+    {
+      id: "3",
+      title: "AI CAREER ASSISTANCE",
+      description: "Platform integrating ATS scoring, RAG chatbots, and browser automation to streamline applications.",
+      imageUrl: "/Career.png",
+      aspectRatio: 1901 / 927,
+      videoUrl: "",
+      demoUrl: "https://vzg-hck.vercel.app/",
+      githubUrl: "https://github.com/akula-sahith",
+      detailed: {
+        problemStatement: "Candidates struggle to align resumes to job descriptions and spend tedious hours applying on multiple platforms.",
+        solution: "An intelligent platform combining NLP+LLM ATS scoring, interview preparation modules, and a unique one-click apply system built using browser automation.",
+        features: ["NLP AI Resume Optimization", "RAG based Interview Chatbot", "One-Click Browser Automation Applier"],
+        techStack: ["React", "Express", "MongoDB", "Python"]
+      }
+    }
+  ],
+  manifesto: [
+    {
+      id: '01',
+      category: 'STRATEGY',
+      title: 'ATTENTION THAT MATTERS',
+      imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+      id: '02',
+      category: 'TECH',
+      title: 'SCALABLE ARCHITECTURE',
+      imageUrl: "https://images.unsplash.com/photo-1481481322814-3d601de11171?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+      id: '03',
+      category: 'UX & UI',
+      title: 'EMOTIONAL INTERFACES',
+      imageUrl: "https://images.unsplash.com/photo-1616077168079-7e090ce23f95?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+      id: '04',
+      category: 'FUTURE',
+      title: 'AI-DRIVEN LOGIC',
+      imageUrl: "https://images.unsplash.com/photo-1485217988980-11786ced9454?auto=format&fit=crop&q=80&w=800"
+    }
+  ],
+  certifications: [
+    {
+      id: 'c1',
+      title: 'AWS Certified Cloud Practitioner',
+      issuer: 'Amazon Web Services',
+      date: 'Mar 2026',
+      fileId: '1wrJMQTQdU_bbpObnXmtLhOZTY29vu-pb',
+      category: 'Cloud'
+    },
+    {
+      id: 'c2',
+      title: 'Docker Mastery',
+      issuer: 'Udemy',
+      date: 'May 2026',
+      fileId: '1dcE7k3GkCvM_07BK_MPB27mFcWyP9c9-',
+      category: 'DevOps'
+    },
+    {
+      id: 'c3',
+      title: 'Spring Boot Development',
+      issuer: 'Udemy',
+      date: 'May 2026',
+      fileId: '1SMWQ_zZ_oKJSCUd1V9JtkkcsKonpEWEO',
+      category: 'Backend'
+    },
+    {
+      id: 'c4',
+      title: 'CLA: Programming Essentials in C',
+      issuer: 'Cisco Networking Academy',
+      date: 'Jan 2024',
+      fileId: '1_Tcymn02xdnybudmeeX2krKvrEtbYBLq',
+      category: 'Programming'
+    },
+    {
+      id: 'c5',
+      title: 'CPA: Programming Essentials in C++',
+      issuer: 'Cisco Networking Academy',
+      date: 'Sep 2024',
+      fileId: '1fLuNF5acrg0zzFrbdj43HpKSkmjZUApW',
+      category: 'Programming'
+    },
+    {
+      id: 'c5',
+      title: 'PCAP: Programming Essentials in Python',
+      issuer: 'Cisco Networking Academy',
+      date: 'May4 2024',
+      fileId: '1UwJYANXvxomoMRbY-CfACoLX8SlDPb-R',
+      category: 'Programming'
+    },
+    {
+      id: 'c6',
+      title: 'Java Programming for Beginners',
+      issuer: 'SkillUp by Simplilearn',
+      date: 'Sep 2023',
+      fileId: '17mIDXzQIPO9cH0yvqTa4vRc7IpPeGfMq',
+      category: 'Programming'
+    },
+    {
+      id: 'c7',
+      title: 'Java (Basic)',
+      issuer: 'HackerRank',
+      date: 'Jan 2025',
+      fileId: '1uf2mA0QHoP4bGVKWcpJC96GFBzEWeqUt',
+      category: 'Programming'
+    },
+    {
+      id: 'c8',
+      title: 'Python (Basic)',
+      issuer: 'HackerRank',
+      date: 'Jan 2025',
+      fileId: '10VCkER-d3jSrF5Spnm0MI9OYX3trTrWX',
+      category: 'Programming'
+    },
+    {
+      id: 'c9',
+      title: 'The Joy of Computing Using Python',
+      issuer: 'NPTEL / IIT Madras',
+      date: 'Oct 2024',
+      fileId: '1CpodCn7LFJpLQfNGGQaAGlfq-22Y2ZNt',
+      category: 'AI/ML'
+    },
+    {
+      id: 'c10',
+      title: 'Understanding Incubation and Entrepreneurship',
+      issuer: 'NPTEL / IIT Madras',
+      date: 'Oct 2025',
+      fileId: '1efOFBCBeUskCHd9D4e0aHKSIALQEoOHU',
+      category: 'Entrepreneurship'
+    }
+  ]
+};

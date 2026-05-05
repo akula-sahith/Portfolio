@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-bg: #030303;
+  --color-brand-surface: #0a0a0a;
+  --color-brand-border: #1a1a1a;
+  --color-brand-text: #ffffff;
+  --color-brand-muted: #666666;
+  --color-brand-accent: #38bdf8;
+
+  --font-display: "Archivo Black", sans-serif;
+  --font-body: "Space Grotesk", sans-serif;
+}
+
+body {
+  background-color: var(--color-brand-bg);
+  color: var(--color-brand-text);
+  font-family: var(--font-body);
+  overflow-x: clip;
+  /* Hide scrollbar for a cleaner look */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.text-stroke-bg {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
+  color: transparent;
+}
+
+.text-stroke-accent {
+  -webkit-text-stroke: 1px var(--color-brand-accent);
+  color: transparent;
+}
+
+@layer utilities {
+  .text-editorial-title {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+  }
+}
