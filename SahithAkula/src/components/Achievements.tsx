@@ -5,7 +5,8 @@ import { Trophy } from 'lucide-react';
 const ACHIEVEMENTS = [
   { id: '01', title: 'Game of Algorithms', event: 'IEEE', desc: 'Secured 1st Prize.' },
   { id: '02', title: 'StartUp Competition', event: 'College Level', desc: 'Secured 1st Prize.' },
-  { id: '03', title: '24 Hour Hackathon', event: 'PSCMR', desc: 'Secured 2nd Prize.' },
+  { id: '03', title: '24 Hour Hackathon', event: 'Potti Sree Ramulu College of Engineering', desc: 'Secured 2nd Prize.' },
+  { id: '04', title: 'CodeVoyage', event: 'Coding Competition', desc: 'Secured 3rd Prize.' },
 ];
 
 export default function Achievements() {

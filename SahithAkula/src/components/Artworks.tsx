@@ -209,7 +209,8 @@ function CarouselItem({
 }
 
 function CarouselScene({ progressMV }: { progressMV: any }) {
-  const total = PORTFOLIO_DATA.artworks.length;
+  const featuredArtworks = PORTFOLIO_DATA.artworks.slice(0, 3);
+  const total = featuredArtworks.length;
 
   useFrame((state) => {
     const mx = (state.mouse.x * Math.PI) / 24;
@@ -221,7 +222,7 @@ function CarouselScene({ progressMV }: { progressMV: any }) {
 
   return (
     <group>
-      {PORTFOLIO_DATA.artworks.map((item, i) => (
+      {featuredArtworks.map((item, i) => (
         <CarouselItem
           key={item.id}
           index={i}
@@ -427,7 +428,8 @@ function ProgressDots({ total, active, onSelect }: { total: number; active: numb
 // ─── Main Component ───────────────────────────────────────────────────────────
 export default function Artworks() {
   const containerRef = useRef<HTMLElement>(null);
-  const numItems = PORTFOLIO_DATA.artworks.length;
+  const featuredArtworks = PORTFOLIO_DATA.artworks.slice(0, 3);
+  const numItems = featuredArtworks.length;
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(
@@ -494,7 +496,7 @@ export default function Artworks() {
     return () => window.removeEventListener('keydown', onKey);
   }, [activeIndex, goTo, isPanelOpen]);
 
-  const activeArtwork = PORTFOLIO_DATA.artworks[activeIndex];
+  const activeArtwork = featuredArtworks[activeIndex];
 
   return (
     <section ref={containerRef} className="relative w-full bg-[#050505] z-10" style={{ height: `${numItems * 100}vh` }}>

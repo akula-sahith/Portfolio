@@ -82,6 +82,40 @@ export const PORTFOLIO_DATA = {
         features: ["NLP AI Resume Optimization", "RAG based Interview Chatbot", "One-Click Browser Automation Applier"],
         techStack: ["React", "Express", "MongoDB", "Python"]
       }
+    },
+    {
+      id: "4",
+      title: "URBAN EYE",
+      description: "Smart City Dashboard visualizing real-time city data — traffic, pollution, and live events — through interactive maps and charts.",
+      imageUrl: "/urbaneye.png",
+      aspectRatio: 16 / 9,
+      videoUrl: "",
+      demoUrl: "https://urban-eye-wine.vercel.app",
+      paperUrl: "",
+      githubUrl: "https://github.com/akula-sahith/UrbanEye",
+      detailed: {
+        problemStatement: "City administrators and citizens lack a unified, real-time view of urban metrics like traffic congestion, air quality, and local events across their city.",
+        solution: "An interactive smart city dashboard that aggregates and visualizes live urban data streams through dynamic charts, geospatial maps, and real-time event feeds with a clean, data-driven UI.",
+        features: ["Real-Time Traffic Visualization", "Pollution & Air Quality Tracking", "Interactive City Event Map", "Live Data Updates & Charts"],
+        techStack: ["React", "node.js", "MongoDB", "tailwindcss"]
+      }
+    },
+    {
+      id: "5",
+      title: "TOURIX",
+      description: "Travel & Tourism platform enabling seamless trip discovery, booking, and itinerary management with an immersive front-end experience.",
+      imageUrl: "/tourix.png",
+      aspectRatio: 16 / 9,
+      videoUrl: "",
+      demoUrl: "https://tourix-frontend-fawn.vercel.app",
+      paperUrl: "",
+      githubUrl: "https://github.com/akula-sahith/Tourix-Frontend",
+      detailed: {
+        problemStatement: "Travelers struggle to discover, plan, and book trips from a single platform, often navigating multiple fragmented services for destinations, stays, and itineraries.",
+        solution: "A full-featured tourism frontend that provides curated destination discovery, trip planning flows, and booking interfaces with smooth animations and a modern, immersive UI/UX.",
+        features: ["Destination Discovery & Search", "Trip Itinerary Planning", "Booking & Reservation Flows", "Immersive Animated UI"],
+        techStack: ["React", "tailwindcss", "node.js", "MongoDB"]
+      }
     }
   ],
   manifesto: [
