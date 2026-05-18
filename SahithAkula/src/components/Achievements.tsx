@@ -8,7 +8,7 @@ const ACHIEVEMENTS = [
   { id: '01', title: 'Hackerrank Orchestrate - 24Hrs Agent Building Hackathon', desc: 'Ranked 366 out of 1300+ participants' },
   { id: '02', title: '24 Hours Hackathon', event: 'Potti Sree Ramulu College of Engineering', desc: 'Secured 2nd Prize.' },
   { id: '03', title: 'StartUp Competition', event: 'College Level Startup Competition', desc: 'Secured 1st Prize.' },
-  { id: '04', title: 'Game of Algorithms', event: 'College Level Coding Competition', desc: 'Secured 1st Prize.' }, \
+  { id: '04', title: 'Game of Algorithms', event: 'College Level Coding Competition', desc: 'Secured 1st Prize.' },
   { id: '05', title: 'CodeVoyage', event: 'College Level Coding Competition', desc: 'Secured 3rd Prize.' },
 ];
 
