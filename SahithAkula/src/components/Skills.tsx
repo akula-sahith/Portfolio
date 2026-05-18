@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Terminal, Code2, Database, Layout, BrainCircuit, Cloud, Cpu, ChevronDown } from 'lucide-react';
+import { Terminal, Code2, Database, Layout, BrainCircuit, Cloud, Cpu, ChevronDown, Server } from 'lucide-react';
 
 const TECH_LOGO_MAP: Record<string, string> = {
   java: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
@@ -31,43 +31,94 @@ function getTechLogo(tech: string): string | null {
 }
 
 const SKILLS = [
-  { 
-    id: 'languages',
-    category: 'Languages', 
-    icon: <Code2 size={20} />,
-    items: ['Java', 'Python', 'C', 'SQL'] 
-  },
-  { 
+  {
     id: 'backend',
-    category: 'Backend', 
+    category: 'Backend Engineering',
     icon: <Database size={20} />,
-    items: ['Spring Boot', 'Express.js', 'REST APIs', 'Microservices', 'Firebase', 'PostgreSQL', 'MySQL', 'MongoDB'] 
+    items: [
+      'Java',
+      'Spring Boot',
+      'Express.js',
+      'REST APIs',
+      'Microservices',
+      'Node.js',
+      'Firebase'
+    ]
   },
-  { 
-    id: 'frontend',
-    category: 'Frontend', 
-    icon: <Layout size={20} />,
-    items: ['React.js', 'Flutter', 'HTML', 'CSS'] 
-  },
-  { 
+
+  {
     id: 'aiml',
-    category: 'AI / ML', 
+    category: 'AI / ML',
     icon: <BrainCircuit size={20} />,
-    items: ['OpenCV', 'LLMs', 'RAG', 'Ollama', 'Object Detection & Tracking', 'YOLO (v8, v12)', 'Machine Learning', 'Deep Learning'] 
+    items: [
+      'Machine Learning',
+      'Deep Learning',
+      'Scikit-learn',
+      'TensorFlow',
+      'LLMs',
+      'RAG',
+      'LangChain',
+      'Ollama',
+      'OpenCV',
+      'Agentic AI Workflows',
+      'Prompt Engineering'
+    ]
   },
-  { 
+
+  {
+    id: 'frontend',
+    category: 'Frontend & Mobile',
+    icon: <Layout size={20} />,
+    items: [
+      'React.js',
+      'Flutter',
+      'HTML',
+      'CSS',
+      'TailwindCSS'
+    ]
+  },
+
+  {
+    id: 'databases',
+    category: 'Databases & Cloud',
+    icon: <Server size={20} />,
+    items: [
+      'PostgreSQL',
+      'MySQL',
+      'MongoDB',
+      'ChromaDB',
+      'Qdrant',
+      'AWS'
+    ]
+  },
+
+  {
     id: 'devops',
-    category: 'DevOps', 
+    category: 'DevOps & Tools',
     icon: <Cloud size={20} />,
-    items: ['Docker', 'Git', 'GitHub Actions', 'Linux'] 
+    items: [
+      'Docker',
+      'Git',
+      'GitHub Actions',
+      'Linux',
+      'CI/CD'
+    ]
   },
-  { 
+
+  {
     id: 'swe',
-    category: 'Software Engineering', 
+    category: 'Software Engineering',
     icon: <Cpu size={20} />,
-    items: ['Object-Oriented Programming', 'Data Structures & Algorithms', 'Agile Methodologies'] 
+    items: [
+      'Object-Oriented Programming',
+      'Data Structures & Algorithms',
+      'Agile Methodologies',
+      'SDLC',
+      'Problem Solving'
+    ]
   },
 ];
+
 
 export default function Skills() {
   const [activeSection, setActiveSection] = useState<string | null>(SKILLS[0].id);
@@ -81,7 +132,7 @@ export default function Skills() {
             Technical Skills
           </h2>
         </div>
-        
+
         <div className="flex flex-col gap-4">
           {SKILLS.map((skillGroup, idx) => {
             const isActive = activeSection === skillGroup.id;
@@ -106,12 +157,12 @@ export default function Skills() {
                       {skillGroup.category}
                     </h3>
                   </div>
-                  <ChevronDown 
-                    size={24} 
-                    className={`text-white/50 transition-transform duration-300 ${isActive ? 'rotate-180 text-brand-accent' : ''}`} 
+                  <ChevronDown
+                    size={24}
+                    className={`text-white/50 transition-transform duration-300 ${isActive ? 'rotate-180 text-brand-accent' : ''}`}
                   />
                 </button>
-                
+
                 <AnimatePresence>
                   {isActive && (
                     <motion.div
@@ -125,13 +176,13 @@ export default function Skills() {
                           {skillGroup.items.map(item => {
                             const logo = getTechLogo(item);
                             return (
-                            <span 
-                              key={item} 
-                              className="px-4 py-2 bg-black flex items-center gap-2 border border-white/10 rounded-full text-sm text-white/80 font-mono hover:text-brand-accent hover:border-brand-accent/50 transition-colors shadow-sm"
-                            >
-                              {logo && <img src={logo} alt="" className="w-4 h-4 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }} />}
-                              {item}
-                            </span>
+                              <span
+                                key={item}
+                                className="px-4 py-2 bg-black flex items-center gap-2 border border-white/10 rounded-full text-sm text-white/80 font-mono hover:text-brand-accent hover:border-brand-accent/50 transition-colors shadow-sm"
+                              >
+                                {logo && <img src={logo} alt="" className="w-4 h-4 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }} />}
+                                {item}
+                              </span>
                             );
                           })}
                         </div>

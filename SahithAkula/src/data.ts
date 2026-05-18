@@ -1,8 +1,8 @@
 export const PORTFOLIO_DATA = {
   bio: {
     name: "SAHITH AKULA",
-    role: "FULL STACK & AI DEVELOPER",
-    description: "Developing scalable backend systems, responsive frontend, and AI/ML pipelines.",
+    role: "FULL STACK & AI ENGINEER",
+    description: "Full Stack & AI Engineer building scalable backend systems and intelligent applications.",
     email: "akulasahith268@gmail.com",
     location: "Vijayawada, AP",
     phone: "+91 8341999296"
@@ -10,29 +10,30 @@ export const PORTFOLIO_DATA = {
   apart: [
     {
       id: '01',
-      category: 'FULL STACK & MOBILE',
-      title: 'CROSS-PLATFORM SYSTEMS',
-      desc: 'Building robust scalable web apps with React & Spring Boot, and real-time mobile solutions with Flutter and Firebase.',
+      category: 'BACKEND ENGINEERING',
+      title: 'SCALABLE SYSTEMS',
+      desc: 'Designing scalable backend architectures, REST APIs, and microservices using Spring Boot, Node.js, and modern engineering practices.',
     },
     {
       id: '02',
-      category: 'AI & MACHINE LEARNING',
-      title: 'INTELLIGENT PIPELINES',
-      desc: 'Integrating RAG, large language models, and browser automation to drive data-centric intelligent platforms.',
+      category: 'FULL STACK DEVELOPMENT',
+      title: 'END-TO-END APPLICATIONS',
+      desc: 'Building responsive web and mobile applications using React, Flutter, and modern full-stack technologies with production-focused development.',
     },
     {
       id: '03',
-      category: 'COMPUTER VISION',
-      title: 'REAL-TIME DETECTION',
-      desc: 'Training state-of-the-art models like YOLOv12 for high-accuracy object detection and tracking systems.',
+      category: 'AI / ML ENGINEERING',
+      title: 'INTELLIGENT APPLICATIONS',
+      desc: 'Exploring Machine Learning, Deep Learning, LLMs, RAG pipelines, and agentic AI workflows to develop intelligent real-world systems.',
     },
     {
       id: '04',
-      category: 'DEVOPS & INFRA',
-      title: 'CLOUD-NATIVE DELIVERY',
-      desc: 'Orchestrating robust CI/CD pipelines using Docker, GitHub Actions, and containerized deployments on AWS EC2.',
+      category: 'CLOUD & DEVOPS',
+      title: 'MODERN DEPLOYMENT',
+      desc: 'Containerizing and deploying applications using Docker, GitHub Actions, AWS, and scalable CI/CD workflows.',
     }
-  ],
+  ]
+  ,
   artworks: [
     {
       id: "1",
