@@ -70,6 +70,44 @@ export const PORTFOLIO_DATA = {
     },
     {
       id: "3",
+      title: "ORCHESTRATE SUPPORT TRIAGE AGENT",
+      description: "Multi-domain AI-powered support triage system using RAG, ChromaDB, and Gemini for grounded response generation.",
+      imageUrl: "/Orchestrate.png",
+      aspectRatio: 1898 / 927,
+      videoUrl: "",
+      demoUrl: "",
+      githubUrl: "https://github.com/akula-sahith/Orchestrate",
+      detailed: {
+        problemStatement: "Organizations handling support operations across multiple ecosystems struggle with routing, escalation, hallucination prevention, and generating safe grounded responses in real-time.",
+
+        solution: "Built a deterministic Single-Agent RAG (Retrieval-Augmented Generation) pipeline capable of handling support tickets across HackerRank, Claude, and Visa ecosystems. The system performs company-aware routing, metadata-filtered retrieval, escalation handling, and structured response generation using Gemini and ChromaDB.",
+
+        features: [
+          "Metadata-Filtered RAG Pipeline",
+          "Multi-Domain Ticket Routing",
+          "Deterministic Escalation Logic",
+          "Structured Outputs using Pydantic",
+          "Semantic Search with ChromaDB",
+          "Grounded Response Generation",
+          "Hallucination Reduction Techniques",
+          "Local Embedding Pipeline",
+          "CSV-Based Batch Ticket Processing"
+        ],
+
+        techStack: [
+          "Python",
+          "LangChain",
+          "Gemini 1.5 Flash",
+          "ChromaDB",
+          "Sentence Transformers",
+          "Pydantic",
+          "Pandas",
+          "scikit-learn"
+        ]
+      }
+    },
+    {
+      id: "4",
       title: "AI CAREER ASSISTANCE",
       description: "Platform integrating ATS scoring, RAG chatbots, and browser automation to streamline applications.",
       imageUrl: "/Career.png",
@@ -85,7 +123,7 @@ export const PORTFOLIO_DATA = {
       }
     },
     {
-      id: "4",
+      id: "5",
       title: "URBAN EYE",
       description: "Smart City Dashboard visualizing real-time city data — traffic, pollution, and live events — through interactive maps and charts.",
       imageUrl: "/urbaneye.png",
@@ -102,7 +140,7 @@ export const PORTFOLIO_DATA = {
       }
     },
     {
-      id: "5",
+      id: "6",
       title: "TOURIX",
       description: "Travel & Tourism platform enabling seamless trip discovery, booking, and itinerary management with an immersive front-end experience.",
       imageUrl: "/tourix.png",

@@ -3,7 +3,6 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { Trophy } from 'lucide-react';
 import { title } from 'process';
 import { desc } from 'motion/react-client';
-
 const ACHIEVEMENTS = [
   { id: '01', title: 'Hackerrank Orchestrate - 24Hrs Agent Building Hackathon', desc: 'Ranked 366 out of 1300+ participants' },
   { id: '02', title: '24 Hours Hackathon', event: 'Potti Sree Ramulu College of Engineering', desc: 'Secured 2nd Prize.' },
