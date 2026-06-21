@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>AXIOM Test</title>
+
+    <style>
+
+        body{
+            background:#0a0a0a;
+            color:white;
+            font-family:Arial,sans-serif;
+            padding:20px;
+        }
+
+        #state{
+            font-size:24px;
+            margin-bottom:20px;
+            color:cyan;
+        }
+
+        #output{
+            font-size:20px;
+            margin-top:20px;
+            min-height:100px;
+        }
+
+        #display-container{
+            margin-top:30px;
+            padding:20px;
+            border:1px solid #333;
+            border-radius:12px;
+        }
+
+        #display-container img{
+            margin-top:10px;
+            border-radius:10px;
+        }
+
+        #logs{
+            margin-top:30px;
+            border-top:1px solid #333;
+            padding-top:10px;
+            color:#999;
+            font-size:14px;
+        }
+
+        button{
+            padding:10px 20px;
+            cursor:pointer;
+        }
+
+        a{
+            color:cyan;
+        }
+
+        #question-input{
+            width:400px;
+            padding:10px;
+            font-size:16px;
+            background:#1a1a1a;
+            color:white;
+            border:1px solid #444;
+            border-radius:8px;
+            margin-right:10px;
+        }
+
+        .project-list-container{
+            display:flex;
+            flex-wrap:wrap;
+            gap:15px;
+            margin-top:15px;
+        }
+
+        .project-summary-card{
+            background:#1a1a2e;
+            border:1px solid #444;
+            border-radius:12px;
+            padding:15px;
+            cursor:pointer;
+            transition:
+                border-color 0.2s,
+                transform 0.2s;
+            width:250px;
+        }
+
+        .project-summary-card:hover{
+            border-color:cyan;
+            transform:translateY(-2px);
+        }
+
+        .project-summary-card h3{
+            margin:0 0 8px 0;
+            color:cyan;
+        }
+
+        .project-summary-card p{
+            margin:0;
+            font-size:14px;
+            color:#ccc;
+        }
+
+        .project-summary-card img{
+            width:100%;
+            border-radius:8px;
+            margin-bottom:10px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h2>AXIOM WebSocket Test</h2>
+
+<div>
+    Orb State:
+    <span id="state">IDLE</span>
+</div>
+
+<br>
+
+<input
+    id="question-input"
+    type="text"
+    placeholder="Ask AXIOM anything..."
+    value="Tell me about Sahith Projects on flutter"
+/>
+
+<button onclick="sendMsg()">
+    Send Question
+</button>
+
+<h3>Response</h3>
+
+<div id="output"></div>
+
+<h3>Display Area</h3>
+
+<div id="display-container">
+
+    Waiting for display events...
+
+</div>
+
+<h3>Debug Logs</h3>
+
+<div id="logs"></div>
+
+<script>
+
+const socket = new WebSocket("ws://localhost:8081/ws/chat");
+
+let response = "";
+
+// Generic collection memory for "explore remaining" flow
+let currentCollection = null;
+let selectedEntityId = null;
+let currentEntityType = null; // e.g. "PROJECT", "CERTIFICATION"
+
+socket.onopen = () => {
+    log("Connected to WebSocket");
+};
+
+socket.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+    log(JSON.stringify(data));
+
+    switch(data.type) {
+        case "STATE":
+            document.getElementById("state").innerText = data.state;
+            break;
+        case "TOKEN":
+            response += data.content;
+            document.getElementById("output").innerHTML = response;
+            break;
+        case "DISPLAY":
+            handleDisplay(data);
+            break;
+        case "DONE":
+            log("Response Complete");
+            renderRemainingEntities();
+            break;
+    }
+};
+
+function handleDisplay(data) {
+    console.log("Display Event:", data);
+    
+    // Check if it's a list display type (ends with _LIST)
+    if (data.displayType.endsWith("_LIST")) {
+        const entityType = data.displayType.replace("_LIST", "");
+        renderEntityList(data.payload, entityType);
+        return;
+    }
+
+    // Handle singular item displays
+    switch(data.displayType) {
+        case "PROJECT":
+        case "CERTIFICATION":
+        case "EXPERIENCE":
+        case "RESEARCH":
+        case "ACHIEVEMENT":
+        case "ACTIVITY":
+            renderEntityItem(data.payload, data.displayType);
+            break;
+        case "SKILL_EVIDENCE":
+            renderSkillEvidence(data.payload);
+            break;
+        default:
+            console.log("Unknown Display Type:", data.displayType);
+            // Default generic render just in case
+            renderGenericItem(data.payload, data.displayType);
+    }
+}
+
+function renderEntityItem(entity, type) {
+    // Generate some basic HTML based on the common properties
+    let html = `
+        <div style="border:1px solid #333; border-radius:12px; padding:15px; margin-bottom:20px;">
+            <h2>${entity.title || 'Untitled'}</h2>
+    `;
+    
+    if (entity.organization || entity.company || entity.issuer || entity.journal) {
+        html += `<h4 style="color:cyan; margin-top:0;">${entity.organization || entity.company || entity.issuer || entity.journal}</h4>`;
+    }
+
+    if (entity.elevatorPitch) html += `<p>${entity.elevatorPitch}</p>`;
+    if (entity.description) html += `<p>${entity.description}</p>`;
+    if (entity.abstractText) html += `<p>${entity.abstractText}</p>`;
+
+    if (entity.thumbnail) {
+        html += `<img width="300" src="${entity.thumbnail}" alt="thumbnail" /><br><br>`;
+    }
+
+    if (entity.skills && entity.skills.length > 0) {
+        html += `<p><strong>Skills:</strong> ${entity.skills.join(', ')}</p>`;
+    }
+    if (entity.techStack && entity.techStack.length > 0) {
+        html += `<p><strong>Tech Stack:</strong> ${entity.techStack.join(', ')}</p>`;
+    }
+
+    if (entity.githubUrl) html += `<a target="_blank" href="${entity.githubUrl}">GitHub</a> &nbsp; `;
+    if (entity.demoUrl) html += `<a target="_blank" href="${entity.demoUrl}">Demo</a> &nbsp; `;
+    if (entity.url) html += `<a target="_blank" href="${entity.url}">Link</a> &nbsp; `;
+    if (entity.credentialUrl) html += `<a target="_blank" href="${entity.credentialUrl}">Credential</a> &nbsp; `;
+
+    html += `</div>`;
+    document.getElementById("display-container").innerHTML = html;
+}
+
+function renderGenericItem(item, title) {
+    document.getElementById("display-container").innerHTML = `
+        <h2>${title}</h2>
+        <pre>${JSON.stringify(item, null, 2)}</pre>
+    `;
+}
+
+function renderEntityList(payload, entityType) {
+    // Extract the array from the payload (e.g. payload.projects, payload.certifications)
+    const listKey = Object.keys(payload)[0];
+    const items = payload[listKey];
+
+    currentCollection = items;
+    selectedEntityId = null;
+    currentEntityType = entityType;
+
+    const container = document.getElementById("display-container");
+    container.innerHTML = buildEntityListHtml(items, "Select an Item", entityType);
+}
+
+function buildEntityListHtml(items, heading, entityType) {
+    let html = `
+        <h2>${heading}</h2>
+        <div class="project-list-container">
+    `;
+
+    for (const item of items) {
+        html += `
+            <div class="project-summary-card" onclick="openEntity('${item.id}', '${entityType}')">
+                ${item.thumbnail ? `<img src="${item.thumbnail}" alt="${item.title}" />` : ""}
+                <h3>${item.title}</h3>
+                <p>${item.elevatorPitch || item.company || item.issuer || item.organization || item.journal || ""}</p>
+            </div>
+        `;
+    }
+
+    html += `</div>`;
+    return html;
+}
+
+function renderRemainingEntities() {
+    if (!currentCollection || !selectedEntityId || !currentEntityType) {
+        return;
+    }
+
+    const remaining = currentCollection.filter(i => i.id !== selectedEntityId);
+
+    if (remaining.length === 0) {
+        return;
+    }
+
+    const container = document.getElementById("display-container");
+    container.innerHTML += buildEntityListHtml(remaining, "Explore Other Items", currentEntityType);
+}
+
+function openEntity(entityId, entityType) {
+    selectedEntityId = entityId;
+    currentEntityType = entityType;
+
+    response = "";
+    document.getElementById("output").innerHTML = "";
+    document.getElementById("display-container").innerHTML = "";
+
+    socket.send(JSON.stringify({
+        type: "OPEN_" + entityType,
+        entityId: entityId
+    }));
+}
+
+function renderSkillEvidence(evidence) {
+    let html = `
+        <div style="border:1px solid #333; border-radius:12px; padding:15px; margin-bottom:20px;">
+            <h2>Skill Evidence: ${evidence.skillName}</h2>
+            <h3 style="color:cyan;">Level: ${evidence.skillLevel}</h3>
+    `;
+
+    if (evidence.relatedProjects && evidence.relatedProjects.length > 0) {
+        html += `<h4>Projects</h4><ul>`;
+        for (const p of evidence.relatedProjects) {
+            html += `<li>${p.title}</li>`;
+        }
+        html += `</ul>`;
+    }
+
+    if (evidence.relatedExperience && evidence.relatedExperience.length > 0) {
+        html += `<h4>Experience</h4><ul>`;
+        for (const e of evidence.relatedExperience) {
+            html += `<li>${e.title} at ${e.company}</li>`;
+        }
+        html += `</ul>`;
+    }
+
+    if (evidence.relatedCertifications && evidence.relatedCertifications.length > 0) {
+        html += `<h4>Certifications</h4><ul>`;
+        for (const c of evidence.relatedCertifications) {
+            html += `<li>${c.title} by ${c.issuer}</li>`;
+        }
+        html += `</ul>`;
+    }
+
+    if (evidence.relatedResearch && evidence.relatedResearch.length > 0) {
+        html += `<h4>Research</h4><ul>`;
+        for (const r of evidence.relatedResearch) {
+            html += `<li>${r.title}</li>`;
+        }
+        html += `</ul>`;
+    }
+
+    html += `</div>`;
+    document.getElementById("display-container").innerHTML = html;
+}
+
+function sendMsg() {
+    const input = document.getElementById("question-input");
+    const question = input.value.trim();
+
+    if(!question) return;
+
+    // Clear collection memory
+    currentCollection = null;
+    selectedEntityId = null;
+    currentEntityType = null;
+
+    response = "";
+    document.getElementById("output").innerHTML = "";
+    document.getElementById("display-container").innerHTML = "";
+
+    socket.send(JSON.stringify({
+        type: "QUESTION",
+        content: question
+    }));
+}
+
+document.getElementById("question-input").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        sendMsg();
+    }
+});
+
+function log(message) {
+    document.getElementById("logs").innerHTML += message + "<br>";
+}
+
+</script>
+
+</body>
+
+</html>

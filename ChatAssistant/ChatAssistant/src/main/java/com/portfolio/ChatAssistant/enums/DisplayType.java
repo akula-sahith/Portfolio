@@ -1,0 +1,19 @@
+package com.portfolio.ChatAssistant.enums;
+
+public enum DisplayType {
+    PROJECT,
+    PROJECT_LIST,
+    CERTIFICATION,
+    CERTIFICATION_LIST,
+    RESEARCH,
+    RESEARCH_LIST,
+    EXPERIENCE,
+    EXPERIENCE_LIST,
+    ACHIEVEMENT,
+    ACHIEVEMENT_LIST,
+    ACTIVITY,
+    ACTIVITY_LIST,
+    RESUME,
+    SKILL,
+    SKILL_EVIDENCE
+}
